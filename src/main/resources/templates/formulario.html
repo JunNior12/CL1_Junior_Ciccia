@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Crud Spring</title>
+		<meta charset="UTF-8">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="contanier mt-4">
+			<div class="col-sem-6">
+				<form th:action="@{/salvar}" th:object="${producto}">
+					<div class="card">
+						<div class="card-header">
+							<h3>DATOS DEL PRODUCTO</h3>
+						
+                </div>
+                <div class="card-body">
+                    <!-- Campo ID con validación de 6 caracteres -->
+                    <div class="form-group">
+                        <label><b>ID</b></label>
+                        <input type="text" th:field="*{IdProducto}" class="form-control" />
+                    </div>
+                    
+                    
+                    <!-- Campo APELLIDOS con validación de 1-50 caracteres -->
+                    <div class="form-group">
+                        <label><b>APELLIDOS </b></label>
+                        <input type="text" th:field="*{Apellidos}" class="form-control" />
+                    </div>
+                    <!-- Campo PRECIO UNIDAD con validación de 50-500 -->
+                    <div class="form-group">
+                        <label><b>PRECIO UNIDAD</b></label>
+                        <input type="text" th:field="*{PrecioUnidad}" class="form-control" />
+                    </div>
+                    
+                    
+                    <!-- Campo STOCK con validación de mayor a CERO -->
+                    <div class="form-group">
+                        <label><b>STOCK </b></label>
+                        <input type="text" th:field="*{Stock}" class="form-control" />
+                    </div>
+                    
+                    
+                    <!-- Campo ESTADO con validación de '1' o '0' -->
+                    <div class="form-group">
+                        <label><b>ESTADO</b></label>
+                        <input type="text" th:field="*{Estado}" class="form-control" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                </div>
+            </div>
+            
+            
+            <!-- Mensaje de error general -->
+            <div th:if="${#fields.hasErrors()}" class="alert alert-danger">Corrige los errores e intenta de nuevo.</div>
+            <!-- Mensaje de éxito -->
+            <div th:if="${param.saved}" class="alert alert-success">Registro exitoso.</div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
